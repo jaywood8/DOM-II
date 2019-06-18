@@ -25,8 +25,20 @@ navItems.addEventListener("mouseleave", event => {
     event.target.style.backgroundColor = "white";
 })
 
+//event Stop propagation
+const navPropItems = document.querySelector(".nav");
+navPropItems.addEventListener("click", event => {
+    console.log("This event")
+})
+const navPropItems2 = document.querySelector(".nav a");
+navPropItems2.addEventListener("click", event => {
+    console.log("That event")
+    event.stopPropagation(); //prevents "This event" from logging to console.
+})
+
 
 //Create hover over for each nav item with forEach with a 500ms timeout
+//I also prevent the nav links from refreshing the page on line 38
 const navLinks = document.querySelectorAll(".nav a");
 navLinks.forEach(link => {
     link.addEventListener('mouseover', event => {
@@ -34,6 +46,7 @@ navLinks.forEach(link => {
         setTimeout(function() {
             event.target.style.border = "";
           }, 500);
+        event.preventDefault()  //part of "Stop the navigation from items from refreshing the page by using `preventDefault()`"
     }) 
 })
 
@@ -94,7 +107,6 @@ window.addEventListener("keydown", e => {
 
 //alert on right click
 let alertImg = document.querySelectorAll(".img-content img")
-
 alertImg.forEach(img => {
     img.addEventListener('auxclick', evt => {
     event.target.style.border = "2px solid red";
@@ -107,3 +119,4 @@ window.addEventListener('scroll', e => {
 })
 
 
+//prevent event propagation
