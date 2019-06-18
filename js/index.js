@@ -92,11 +92,18 @@ window.addEventListener("keydown", e => {
     alert("Key down");
 })
 
-//change color on right click
-let welcomeHeader = document.getElementsByClassName(".text-content h2")
-console.log(welcomeHeader);
+//alert on right click
+let alertImg = document.querySelectorAll(".img-content img")
 
-welcomeHeader.addEventListener('auxclick', evt => {
-    event.target.style.color = "red";
+alertImg.forEach(img => {
+    img.addEventListener('auxclick', evt => {
+    event.target.style.border = "2px solid red";
+    })
 })
+
+//console log something on scroll
+window.addEventListener('scroll', e => {
+    console.log("We scrollin'");
+})
+
 
